@@ -7,7 +7,7 @@ import { VehicleType } from "@/lib/types/fuel";
 
 interface MobileSettingsFabProps {
   onExportData: () => void;
-  onImportData: (data: any) => void;
+  onImportData: (data: unknown) => void;
   onResetData: () => void;
   customVehicleTypes?: VehicleType[];
   onAddVehicleType?: (vehicleType: VehicleType) => void;

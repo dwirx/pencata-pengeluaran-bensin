@@ -1,0 +1,25 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284c7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="30" cy="30" r="26" fill="url(#grad1)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Fuel drop icon -->
+  <g transform="translate(15, 12)">
+    <!-- Drop shape -->
+    <path d="M15 9 C15 21, 24 30, 15 36 C6 30, 15 21, 15 9 Z" 
+          fill="#ffffff" opacity="0.9"/>
+    
+    <!-- Leaf accent -->
+    <path d="M19.2 15 C25.2 13.2, 27 19.2, 22.8 22.8 C21 21, 19.2 18, 19.2 15 Z" 
+          fill="#10b981" opacity="0.8"/>
+  </g>
+  
+  <!-- Text at bottom -->
+  <text x="30" y="51" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="4.8" font-weight="bold">ECO</text>
+</svg>

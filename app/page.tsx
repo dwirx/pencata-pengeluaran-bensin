@@ -17,6 +17,7 @@ import { FuelEntriesList } from "@/components/fuel-tracking/fuel-entries-list";
 import { useFuelData } from "@/hooks/use-fuel-data";
 import { SettingsDialog } from "@/components/settings/settings-dialog";
 import { MobileSettingsFab } from "@/components/settings/mobile-settings-fab";
+import { InstallPrompt, IOSInstallInstructions } from "@/components/pwa/install-prompt";
 
 export default function EcoFuelAnalytics() {
   const {
@@ -279,6 +280,10 @@ export default function EcoFuelAnalytics() {
           onDeleteVehicleType={deleteCustomVehicleType}
         />
       </div>
+
+      {/* PWA Install Prompts */}
+      <InstallPrompt />
+      <IOSInstallInstructions />
     </div>
   );
 }

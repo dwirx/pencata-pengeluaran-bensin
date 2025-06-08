@@ -24,7 +24,7 @@ import { VEHICLE_TYPES } from "@/lib/data/fuel-types";
 
 interface SettingsDialogProps {
   onExportData: () => void;
-  onImportData: (data: any) => void;
+  onImportData: (data: unknown) => void;
   onResetData: () => void;
   customVehicleTypes?: VehicleType[];
   onAddVehicleType?: (vehicleType: VehicleType) => void;
@@ -73,7 +73,7 @@ export function SettingsDialog({
           const data = JSON.parse(e.target?.result as string);
           onImportData(data);
           setIsOpen(false);
-        } catch (error) {
+        } catch {
           alert("File tidak valid! Pastikan format JSON benar.");
         }
       };
@@ -217,7 +217,7 @@ export function SettingsDialog({
                             <AlertDialogHeader>
                               <AlertDialogTitle>Hapus Jenis Kendaraan</AlertDialogTitle>
                               <AlertDialogDescription>
-                                Yakin ingin menghapus "{vehicle.name}"? Tindakan ini tidak bisa dibatalkan.
+                                Yakin ingin menghapus &quot;{vehicle.name}&quot;? Tindakan ini tidak bisa dibatalkan.
                               </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
@@ -322,19 +322,19 @@ export function SettingsDialog({
                           <AlertTriangle className="h-5 w-5 text-red-600" />
                           <span>Reset Semua Data</span>
                         </AlertDialogTitle>
-                        <AlertDialogDescription className="space-y-2">
-                          <p className="font-semibold text-red-600">
-                            ⚠️ PERHATIAN: Tindakan ini akan menghapus SEMUA data!
-                          </p>
-                          <ul className="list-disc list-inside space-y-1 text-sm">
-                            <li>Semua catatan isi bensin</li>
-                            <li>Jenis kendaraan custom</li>
-                            <li>Pengaturan aplikasi</li>
-                          </ul>
-                          <p className="font-semibold">
-                            Pastikan sudah export data sebelum melakukan reset.
-                          </p>
-                        </AlertDialogDescription>
+                                                  <AlertDialogDescription className="space-y-2">
+                            <p className="font-semibold text-red-600">
+                              ⚠️ PERHATIAN: Tindakan ini akan menghapus SEMUA data!
+                            </p>
+                            <ul className="list-disc list-inside space-y-1 text-sm">
+                              <li>Semua catatan isi bensin</li>
+                              <li>Jenis kendaraan custom</li>
+                              <li>Pengaturan aplikasi</li>
+                            </ul>
+                            <p className="font-semibold">
+                              Pastikan sudah export data sebelum melakukan reset.
+                            </p>
+                          </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
                         <AlertDialogCancel>Batal</AlertDialogCancel>
