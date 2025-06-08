@@ -54,12 +54,7 @@ export const metadata: Metadata = {
   }
 };
 
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  themeColor: '#059669',
-};
+
 
 export default function RootLayout({
   children,
@@ -81,7 +76,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#059669" />
         <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.svg" />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
           {children}
         </div>

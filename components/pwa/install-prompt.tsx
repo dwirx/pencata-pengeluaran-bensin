@@ -18,8 +18,11 @@ export function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    
     // Check if app is already installed
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
     const isInWebAppiOS = (window.navigator as unknown as { standalone?: boolean }).standalone === true;
@@ -88,8 +91,8 @@ export function InstallPrompt() {
     }
   };
 
-  // Don't show if already installed or dismissed this session
-  if (isInstalled || 
+  // Don't show if not mounted, already installed or dismissed this session
+  if (!isMounted || isInstalled || 
       (typeof window !== 'undefined' && sessionStorage.getItem('pwa-install-dismissed') === 'true') ||
       !showInstallPrompt) {
     return null;
@@ -159,8 +162,11 @@ export function InstallPrompt() {
 // iOS specific install instructions component
 export function IOSInstallInstructions() {
   const [showIOS, setShowIOS] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     const isInWebAppiOS = (window.navigator as unknown as { standalone?: boolean }).standalone === true;
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -172,7 +178,7 @@ export function IOSInstallInstructions() {
     }
   }, []);
 
-  if (!showIOS) return null;
+  if (!isMounted || !showIOS) return null;
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-end justify-center z-50 p-4">

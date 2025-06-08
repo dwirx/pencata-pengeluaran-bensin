@@ -18,6 +18,7 @@ import { useFuelData } from "@/hooks/use-fuel-data";
 import { SettingsDialog } from "@/components/settings/settings-dialog";
 import { MobileSettingsFab } from "@/components/settings/mobile-settings-fab";
 import { InstallPrompt, IOSInstallInstructions } from "@/components/pwa/install-prompt";
+import { ClientOnly } from "@/components/common/client-only";
 
 export default function EcoFuelAnalytics() {
   const {
@@ -270,20 +271,24 @@ export default function EcoFuelAnalytics() {
       </Tabs>
 
       {/* Mobile Settings FAB */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <MobileSettingsFab
-          onExportData={exportData}
-          onImportData={importData}
-          onResetData={resetAllData}
-          customVehicleTypes={customVehicleTypes}
-          onAddVehicleType={addCustomVehicleType}
-          onDeleteVehicleType={deleteCustomVehicleType}
-        />
-      </div>
+      <ClientOnly>
+        <div className="fixed bottom-4 right-4 z-50">
+          <MobileSettingsFab
+            onExportData={exportData}
+            onImportData={importData}
+            onResetData={resetAllData}
+            customVehicleTypes={customVehicleTypes}
+            onAddVehicleType={addCustomVehicleType}
+            onDeleteVehicleType={deleteCustomVehicleType}
+          />
+        </div>
+      </ClientOnly>
 
       {/* PWA Install Prompts */}
-      <InstallPrompt />
-      <IOSInstallInstructions />
+      <ClientOnly>
+        <InstallPrompt />
+        <IOSInstallInstructions />
+      </ClientOnly>
     </div>
   );
 }
